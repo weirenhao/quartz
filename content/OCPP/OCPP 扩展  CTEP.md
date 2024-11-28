@@ -1,3 +1,6 @@
+---
+share: "true"
+---
 
 功能开关：CustomDisplayCostAndPrice    该功能包括`DataTransfer`创建一个自定义`SetUserPrice`和一个`RunningCost`和`FinalCost`消息。以及`DefaultPrice`的关键key
 
