@@ -9,9 +9,6 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "李心沐沐 博客",
-    headTags: [
-      '<meta name="referrer" content="no-referrer">',  // 设置 no-referrer 策略
-    ],
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
@@ -73,7 +70,7 @@ const config: QuartzConfig = {
       Plugin.ObsidianFlavoredMarkdown({ enableInHtmlEmbed: false }),
       Plugin.GitHubFlavoredMarkdown(),
       Plugin.TableOfContents(),
-      Plugin.CrawlLinks({ markdownLinkResolution: "relative", lazyLoad: true }),
+      Plugin.CrawlLinks({ markdownLinkResolution: "relative", lazyLoad: true ,referrerPolicy: 'no-referrer'}),
       Plugin.Description(),
       Plugin.Latex({ renderEngine: "katex" }),
     ],
