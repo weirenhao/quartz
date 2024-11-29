@@ -9,6 +9,9 @@ import * as Plugin from "./quartz/plugins"
 const config: QuartzConfig = {
   configuration: {
     pageTitle: "李心沐沐 博客",
+    headTags: [
+      '<meta name="referrer" content="no-referrer">',  // 设置 no-referrer 策略
+    ]
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
