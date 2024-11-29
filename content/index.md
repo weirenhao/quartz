@@ -1,6 +1,10 @@
 ---
 share: "true"
-title: index
+tags:
+  - 首页
+path: content
+title: 首页
+en-filename: index
 ---
 
 这是首页内容。
