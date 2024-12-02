@@ -1,6 +1,8 @@
 ---
 share: "true"
+date updated: 2024-12-02 09:45
 ---
+
 # [网络通信协议-基础中的基础](https://www.cnblogs.com/the3times/p/12724602.html "发布于 2020-04-18 10:53")
 
 ## CS架构&BS架构
@@ -48,7 +50,7 @@ BS指的是Browser-Server，一个浏览器和一个服务端软件
 
 物理层由来：上面提到，孤立的计算机之间要想一起玩，就必须接入internet，言外之意就是计算机之间必须完成组网。
 
-![img](https://images2015.cnblogs.com/blog/1036857/201610/1036857-20161008154500754-704720294.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20241202094241.png)
 
 物理层功能：主要是基于电器特性发送高低电压(电信号)，高电压对应数字1，低电压对应数字0
 
@@ -190,16 +192,16 @@ arp协议功能：广播的方式发送数据包，获取目标主机的mac地�
 
 一：首先通过ip地址和子网掩码区分出自己所处的子网
 
-|场景|数据包地址|
-|---|---|
-|同一子网|目标主机mac，目标主机ip|
-|不同子网|网关mac，目标主机ip|
+| 场景   | 数据包地址          |
+| ---- | -------------- |
+| 同一子网 | 目标主机mac，目标主机ip |
+| 不同子网 | 网关mac，目标主机ip   |
 
 二：分析172.16.10.10/24与172.16.10.11/24处于同一网络(如果不是同一网络，那么下表中目标ip为172.16.10.1，通过arp获取的是网关的mac)
 
-||源mac|目标mac|源ip|目标ip|数据部分|
-|---|---|---|---|---|---|
-|发送端主机|发送端mac|FF:FF:FF:FF:FF:FF|172.16.10.10/24|172.16.10.11/24|数据|
+|       | 源mac   | 目标mac             | 源ip             | 目标ip            | 数据部分 |
+| ----- | ------ | ----------------- | --------------- | --------------- | ---- |
+| 发送端主机 | 发送端mac | FF:FF:FF:FF:FF:FF | 172.16.10.10/24 | 172.16.10.11/24 | 数据   |
 
 三：这个包会以广播的方式在发送端所处的自网内传输，所有主机接收后拆开包，发现目标ip为自己的，就响应，返回自己的mac
 
@@ -275,7 +277,7 @@ tcp协议又称好人协议，只要收到请求，就会发出一个确认信�
 
 **tcp报文**
 
-![](https://images2015.cnblogs.com/blog/1036857/201610/1036857-20161008185553973-1895926477.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20241202094313.png)
 
 tcp协议又称可靠协议：**tcp的请求确认机制是保证数据安全的原因，但这是一牺牲数据传输效率为代价的。**
 
@@ -288,8 +290,6 @@ tcp协议又称可靠协议：**tcp的请求确认机制是保证数据安全的
 <4> 客户端收到请求后，回复同意
 <2>和<3>是两个连续从服务端发出的消息，可以合并从一个回复并请求。整个过程就是三次握手建立TCP连接
 ```
-
-![](https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2090707548,659994783&fm=26&gp=0.jpg)
 
 **握手流程分析**：
 
@@ -330,23 +330,16 @@ tcp协议有一个半连接池的概念，又称backlog。它的本质是一个�
 
 **数据传输**（来自掘金网：[https://juejin.im/post/5cb93204f265da039955d770#heading-2）](https://juejin.im/post/5cb93204f265da039955d770#heading-2%EF%BC%89)
 
-![image](https://user-gold-cdn.xitu.io/2019/4/19/16a336b5b133fb1d?imageslim)
-
 - 客户端喊了一句话(data)，接收方听见了之后要回复自己听见了(ack)。如果喊了一句，半天没听到对方回复，就认为自己的话被大风吹走了，没听见，所以需要重新喊话，**这就是tcp重传**。也有可能是服务端听到了客户端的话，但是Server向Client的回复被大风吹走了，以至于Client没听见Server的回复。Client并不能判断究竟是自己的话被大风吹走了还是Server的回复被大风吹走了，Client也不用管，重传一下就是。
-    
+
 - Client可以向Server喊话，同样Server也可以向Client喊话，因为tcp链接是「双工的」，双方都可以主动发起数据传输。不过无论是哪方喊话，都需要收到对方的确认才能认为对方收到了自己的喊话。
-    
+
 - Client可能是个高射炮，一说连说了八句话，这时候Server可以不用一句一句回复，而是连续听了这八句话之后，一起向对方回复说前面你说的八句话我都听见了，这就是批量ack。但是Client也不能一次性说了太多话，Server的脑子短时间可能无法消化太多，两人之间需要有协商好的合适的发送和接受速率，这个就是「TCP窗口大小」。
-    
 
 **四次挥手**
 
-![](https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1293650965,3985661876&fm=26&gp=0.jpg)
+关闭TCP连接。这是A进入终止状态1状态（FIN-WAIT-1），等待B的确认。注意，TCP规定FIN报文即 使不携带数据，也要消耗一个序号。即此时的u是上一次字节序号加1。
 
-**挥手流程分析**：
-
-- 数据传输后，通信的双方都可以主动释放连接。现在A和B都处于ESTABLISHED状态。
-- <1> A停止发送数据，主动关闭TCP连接。这是A进入终止状态1状态（FIN-WAIT-1），等待B的确认。注意，TCP规定FIN报文即 使不携带数据，也要消耗一个序号。即此时的u是上一次字节序号加1。
 - <2> B收到连接释放报文段后即发出确认。然后B进入关闭等待状态（CLOSE-WAIT）。这时TCP连接处于半关闭状态（half-close），即A已经没有数据要发了，但若B发送数据，A仍要接收。也就是说从B到A这个方向的连接没有关闭，这个状态要持续到B给A发送完所有数据后。
 - <3> A收到来自B的确认后，进入终止等待2状态（FIN-WAIT-2），等待B发出连接释放报文段。
 - <4> 若B发完数据，就会发释放连接FIN报文段。B还必须重复上次发过的确认好ack=u+1。这时B进入最后确认状态（LAST-ACK），等待A的确认。
@@ -390,25 +383,23 @@ udp协议特点：
 	因为接收端要通过头部获取所接接收数据的详细信息
 ```
 
-![](https://images2015.cnblogs.com/blog/1036857/201610/1036857-20161008190023098-992049015.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20241202094410.png)
 
 我们知道两个进程如果需要进行通讯最基本的一个前提能能够唯一的标示一个进程，在本地进程通讯中我们可以使用PID来唯一标示一个进程，但PID只在本地唯一，网络中的两个进程PID冲突几率很大，这时候我们需要另辟它径了，我们知道IP层的ip地址可以唯一标示主机，而TCP层协议和端口号可以唯一标示主机的一个进程，这样我们可以利用ip地址＋协议＋端口号唯一标示网络中的一个进程。
 
 能够唯一标示网络中的进程后，它们就可以利用socket进行通信了，什么是socket呢？我们经常把socket翻译为套接字，socket是在应用层和传输层之间的一个抽象层，它把TCP/IP层复杂的操作抽象为几个简单的接口供应用层调用已实现进程在网络中通信。
 
-![img](https://images2015.cnblogs.com/blog/1036857/201610/1036857-20161013091647484-1707663286.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20241202094426.png)
 
 socket起源于UNIX，在Unix一切皆文件哲学的思想下，socket是一种"打开—读/写—关闭"模式的实现，服务器和客户端各自维护一个"文件"，在建立连接打开后，可以向自己文件写入内容供对方读取或者读取对方内容，通讯结束时关闭文件。
 
 **总结**
 
-![](https://img2020.cnblogs.com/blog/1036857/202004/1036857-20200415222138157-249976328.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20241202094444.png)
 
 **每层都有自己的协议**
 
-![](https://img2020.cnblogs.com/blog/1950650/202004/1950650-20200417215741125-8108981.png)
-
----
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20241202094501.png)
 
 ## 网络通信实现
 
@@ -422,21 +413,20 @@ socket起源于UNIX，在Unix一切皆文件哲学的思想下，socket是一种
 获取这四要素分两种方式：
 
 - 静态获取：即手动配置
-    
+
 - 动态获取：通过dhcp协议动态获取相关ip参数。dhcp采用udp协议交互。
-    
-    ```python
-    # dhcp数据包的格式
-    以太网头 --> ip头 --> udp头 --> dhcp数据包
-    # 每个头的内容
-    <1> 最前面的”以太网标头”，设置发出方（本机）的MAC地址和接收方（DHCP服务器）的MAC地址。
-    前者就是本机网卡的MAC地址，后者这时不知道，就填入一个广播地址：FF-FF-FF-FF-FF-FF。
-    <2> 后面的”IP标头”，设置发出方的IP地址和接收方的IP地址。这时，对于这两者，本机都不知道。
-    于是，发出方的IP地址就设为0.0.0.0，接收方的IP地址设为255.255.255.255。
-    <3> 最后的”UDP标头”，设置发出方的端口和接收方的端口。
-    这一部分是DHCP协议规定好的，发出方是68端口，接收方是67端口。过程分析
-    ```
-    
+
+  ```python
+  # dhcp数据包的格式
+  以太网头 --> ip头 --> udp头 --> dhcp数据包
+  # 每个头的内容
+  <1> 最前面的”以太网标头”，设置发出方（本机）的MAC地址和接收方（DHCP服务器）的MAC地址。
+  前者就是本机网卡的MAC地址，后者这时不知道，就填入一个广播地址：FF-FF-FF-FF-FF-FF。
+  <2> 后面的”IP标头”，设置发出方的IP地址和接收方的IP地址。这时，对于这两者，本机都不知道。
+  于是，发出方的IP地址就设为0.0.0.0，接收方的IP地址设为255.255.255.255。
+  <3> 最后的”UDP标头”，设置发出方的端口和接收方的端口。
+  这一部分是DHCP协议规定好的，发出方是68端口，接收方是67端口。过程分析
+  ```
 
 **dhcp动态获取主机相关ip参数的过程分析**：
 
@@ -458,7 +448,7 @@ DNS是域名解析服务器。也可以是域名解析系统，是用来绑定ip
 
 [IP地址，子网掩码，默认网关，DNS服务器详解](https://www.cnblogs.com/JuneWang/p/3917697.html)
 
-![](https://images2015.cnblogs.com/blog/1036857/201610/1036857-20161008191742160-1888861499.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20241202094526.png)
 
 ```python
 13台根dns：
@@ -495,20 +485,20 @@ M.root-servers.net202.12.27.33日本（另支持IPv6）
 - 网关的IP地址：192.168.1.1
 - DNS的IP地址：8.8.8.8
 
-2.打开浏览器，想要访问Google，在地址栏输入了网址：www.google.com。
+2.打开浏览器，想要访问Google，在地址栏输入了网址：[www.google.com。](http://www.google.com。)
 
 3.dns协议(基于udp协议)
 
 4.HTTP部分的内容，类似于下面这样。我们假定这个部分的长度为4960字节，它会被嵌在TCP数据包之中。
 
-> GET / HTTP/1.1  
-> Host: www.google.com  
-> Connection: keep-alive  
-> User-Agent: Mozilla/5.0 (Windows NT 6.1) ……  
-> Accept: text/html,application/xhtml+xml,application/xml;q=0.9,_/_;q=0.8  
-> Accept-Encoding: gzip,deflate,sdch  
-> Accept-Language: zh-CN,zh;q=0.8  
-> Accept-Charset: GBK,utf-8;q=0.7,*;q=0.3  
+> GET / HTTP/1.1\
+> Host: [www.google.com](http://www.google.com)\
+> Connection: keep-alive\
+> User-Agent: Mozilla/5.0 (Windows NT 6.1) ……\
+> Accept: text/html,application/xhtml+xml,application/xml;q=0.9,_/_;q=0.8\
+> Accept-Encoding: gzip,deflate,sdch\
+> Accept-Language: zh-CN,zh;q=0.8\
+> Accept-Charset: GBK,utf-8;q=0.7,*;q=0.3\
 > Cookie: … …
 
 5.TCP协议
@@ -523,7 +513,7 @@ TCP数据包需要设置端口，接收方（Google）的HTTP端口默认是80�
 
 最后，IP数据包嵌入以太网数据包。以太网数据包需要设置双方的MAC地址，发送方为本机的网卡MAC地址，接收方为网关192.168.1.1的MAC地址（通过ARP协议得到）。以太网数据包的数据部分，最大长度为1500字节，而现在的IP数据包长度为5000字节。因此，IP数据包必须分割成四个包。因为每个包都有自己的IP标头（20字节），所以四个包的IP数据包的长度分别为1500、1500、1500、560。
 
-![img](http://mmbiz.qpic.cn/mmbiz/fhujzoQe7TpFMQPUbBPfPzEHqibxDsskhKArLylv9QIjobwV9PwM8lXhlPgBIhHuznZYqybZyicSEic8uNUCcrRPw/640?wx_fmt=jpeg)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20241202094545.png)
 
 8.服务器端响应
 
