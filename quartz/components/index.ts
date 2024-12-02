@@ -20,7 +20,6 @@ import MobileOnly from "./MobileOnly"
 import RecentNotes from "./RecentNotes"
 import Breadcrumbs from "./Breadcrumbs"
 import Comments from "./Comments"
-import SetReferrerPolicy from "./SetReferrerPolicy"
 export {
   ArticleTitle,
   Content,
@@ -44,5 +43,4 @@ export {
   NotFound,
   Breadcrumbs,
   Comments,
-  SetReferrerPolicy,
 }
