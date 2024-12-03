@@ -1,7 +1,7 @@
 ---
-date created: 2024-12-02 10:42
+date: 2024-12-02 10:42
 share: "true"
-date updated: 2024-12-02 10:44
+updated: 2024-12-03 15:58
 ---
 
 ## 1.官网下载安装Postman
