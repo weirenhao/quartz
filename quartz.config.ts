@@ -18,7 +18,7 @@ const config: QuartzConfig = {
     locale: "zh-CN",
     baseUrl: "flancy.cn",
     ignorePatterns: ["private", "templates", ".obsidian"],
-    defaultDateType: "created",
+    defaultDateType: "modified",
     generateSocialImages: true,
     theme: {
       fontOrigin: "googleFonts",
