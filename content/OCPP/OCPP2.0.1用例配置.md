@@ -1,7 +1,7 @@
 ---
 date: 2025-02-17 17:29
 share: "true"
-updated: 2025-02-18 11:17
+updated: 2025-02-18 16:52
 ---
 
 #### TC_B_01_CS
@@ -181,5 +181,125 @@ TC_B_20_CS
 
 TC_B_21_CS
 
+重置充电桩 - 有正在进行的交易 - 空闲时重置
+
 ![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218111645.png)
 ![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218111707.png)
+TC_B_22_CS
+
+重置充电桩 - 有正在进行的交易 - 立即重置
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218112702.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218112722.png)
+
+TC_B_23_CS
+
+重置充电桩 - 不可用状态在重置后持续存在
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218113616.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218113711.png)
+
+TC_B_24_CS
+本测试用例涵盖了充电站点管理系统（CSMS）如何在没有任何正在进行的交易且充电桩处于保留状态时，通过发送重置请求来要求充电桩进行自我重置。例如，当充电桩运行不正常时，可能就需要这样操作
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218114606.png)
+
+TC_B_41_CS
+
+ 重置充电桩 - 多个交易正在进行 - 空闲时重置
+多枪的用例
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218115024.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218115127.png)
+TC_B_25_CS
+
+验证充电桩是否能够按照开放式充电点协议（OCPP）规范中所描述的方式执行重置机制
+重置电动汽车供电设备（EVSE）—— 无正在进行的交易
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218135614.png)
+
+#### TC_B_26_CS
+
+ 有正在进行的交易 - 空闲时重置
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218140359.png)
+
+#### TC_B_27_CS
+
+重置电动汽车供电设备（EVSE） - 有正在进行的交易 - 立即重置
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218140701.png)
+
+#### TC_B_28_CS
+
+重置电动汽车供电设备（EVSE） - 不支持
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218140816.png)
+
+TC_B_29_CS
+
+重置电动汽车供电设备（EVSE）- 有正在进行的交易 - 不支持
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218142031.png)
+TC_B_43_CS
+
+设置新的网络连接配置文件 - 被拒绝
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218142212.png)
+TC_B_45_CS
+
+迁移到新的连接配置文件 - 成功 - 相同的充电站点管理系统（CSMS）根节点
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218142701.png)
+
+TC_B_46_CS
+迁移到新的连接配置文件 - 回退机制 - 相同的充电站点管理系统根节点
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218143217.png)
+
+TC_B_47_CS
+
+迁移到新的连接配置文件 - 按网络配置优先级进行的网络配置文件连接尝试失败后回退 - 新的充电站点管理系统（CSMS）根节点 - 新的充电站点管理系统
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218143538.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218143555.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218143620.png)
+
+TC_B_49_CS
+
+迁移至新连接配置文件 - 按网络配置优先级进行的网络配置文件连接尝试失败后回退 - 相同的充电站点管理系统根节点
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218143917.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218144304.png)
+
+TC_B_50_CS
+
+迁移至新连接配置文件 - 成功 - 新的充电站点管理系统根证书 - 新的充电站点管理系统
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218150920.png)
+TC_B_51_CS
+离线期间的状态变化 - 超过离线阈值
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218151134.png)
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218151202.png)
+
+TC_B_52_CS
+
+离线期间的状态变化 - 小于离线阈值
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218153717.png)
+TC_B_53_CS
+通过完整清单获取基础报告 - 测试强制性的设备管理（DM）变量
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218160710.png)
+TC_B_54_CS
+获取自定义报告 - 包含组件 / 变量，但无实例
+测试当未指定实例时，充电桩是否会发送所有实例。
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218161054.png)
+TC_B_55_CS
+
+测试当给定实例时，充电桩是否会发送一个实例的数据。
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218161827.png)
+
+### TC_B_56_CS
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218164221.png)
+
+#### TC_B_57_CS
+
+![image.png](https://raw.githubusercontent.com/weirenhao/friendly-image/master/20250218164248.png)
